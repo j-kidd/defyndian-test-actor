@@ -13,7 +13,8 @@ public class TestActor extends DefyndianActor{
 
 	@Override
 	protected void handleMessage(DefyndianMessage message) {
-		String body = new String(message.getMessageBody());
+		logger.debug(message.toJSONString());
+		String body = message.getMessageBody();
 		logger.info(body);
 	}
 	
