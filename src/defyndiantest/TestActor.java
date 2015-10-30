@@ -1,9 +1,9 @@
 package defyndiantest;
 
 import defyndian.core.DefyndianActor;
-import exception.DefyndianDatabaseException;
-import exception.DefyndianMQException;
-import messaging.DefyndianMessage;
+import defyndian.exception.DefyndianDatabaseException;
+import defyndian.exception.DefyndianMQException;
+import defyndian.messaging.DefyndianMessage;
 
 public class TestActor extends DefyndianActor{
 
@@ -13,22 +13,36 @@ public class TestActor extends DefyndianActor{
 
 	@Override
 	protected void handleMessage(DefyndianMessage message) {
-		logger.debug(message.toJSONString());
 		String body = message.getMessageBody();
 		logger.info(body);
 	}
 	
 	public static void main( String...args ){
+
+		DefyndianActor actor = null;
 		try {
-			DefyndianActor actor = new TestActor("Test");
-			actor.start();
+			 actor = new TestActor("Test");
+			 actor.start();
 		} catch (DefyndianMQException e) {
+			System.err.println("Global Error catcher: ");
 			System.err.println(e);
+			//System.exit(5);
 		} catch (DefyndianDatabaseException e) {
+			System.err.println("Global Error catcher: ");
 			System.err.println(e);
+			System.exit(5);
 		} catch (Exception e) {
+			System.err.println("Global Error catcher: ");
 			System.err.println(e);
+			System.exit(5);
+		} finally {
+			System.err.println("Shutting down"); 
+			if( actor!=null ){
+				System.err.println("Shutting down");
+				actor.close();
+			}
 		}
+		System.out.println(Thread.activeCount());
 		
 	}
 
