@@ -1,4 +1,4 @@
-package defyndiantest;
+package defyndian.actor.test;
 
 import defyndian.core.DefyndianActor;
 import defyndian.exception.DefyndianDatabaseException;
@@ -23,18 +23,9 @@ public class TestActor extends DefyndianActor{
 		try {
 			 actor = new TestActor("Test");
 			 actor.start();
-		} catch (DefyndianMQException e) {
-			System.err.println("Global Error catcher: ");
-			System.err.println(e);
-			//System.exit(5);
-		} catch (DefyndianDatabaseException e) {
-			System.err.println("Global Error catcher: ");
-			System.err.println(e);
-			System.exit(5);
 		} catch (Exception e) {
 			System.err.println("Global Error catcher: ");
 			System.err.println(e);
-			System.exit(5);
 		} finally {
 			System.err.println("Shutting down"); 
 			if( actor!=null ){

@@ -1,0 +1,22 @@
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+////////////
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories{
+	mavenLocal()	
+	mavenCentral()
+}
+dependencies{
+	compile name: 'defyndian-core', version: '0.1.0'
+}
+
+//////////
+
+mainClassName = 'defyndian.actor.test.TestActor'
+
