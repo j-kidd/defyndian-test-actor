@@ -3,6 +3,7 @@ package defyndian.actor.test;
 import defyndian.core.DefyndianActor;
 import defyndian.exception.DefyndianDatabaseException;
 import defyndian.exception.DefyndianMQException;
+import defyndian.messaging.BasicDefyndianMessage;
 import defyndian.messaging.DefyndianMessage;
 
 public class TestActor extends DefyndianActor{
@@ -11,10 +12,8 @@ public class TestActor extends DefyndianActor{
 		super(arg0);
 	}
 
-	@Override
-	protected void handleMessage(DefyndianMessage message) {
-		String body = message.getMessageBody();
-		logger.info(body);
+	protected void handleMessage(BasicDefyndianMessage message) {
+		logger.info("Received: " + message);
 	}
 	
 	public static void main( String...args ){
