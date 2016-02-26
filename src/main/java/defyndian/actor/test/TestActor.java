@@ -1,6 +1,7 @@
 package defyndian.actor.test;
 
 import defyndian.core.DefyndianActor;
+import defyndian.exception.ConfigInitialisationException;
 import defyndian.exception.DefyndianDatabaseException;
 import defyndian.exception.DefyndianMQException;
 import defyndian.messaging.BasicDefyndianMessage;
@@ -8,7 +9,7 @@ import defyndian.messaging.DefyndianMessage;
 
 public class TestActor extends DefyndianActor{
 
-	public TestActor(String arg0) throws DefyndianMQException, DefyndianDatabaseException {
+	public TestActor(String arg0) throws DefyndianMQException, DefyndianDatabaseException, ConfigInitialisationException {
 		super(arg0);
 	}
 
@@ -23,8 +24,8 @@ public class TestActor extends DefyndianActor{
 			 actor = new TestActor("Test");
 			 actor.start();
 		} catch (Exception e) {
-			System.err.println("Global Error catcher: ");
-			System.err.println(e);
+			System.err.println("Global Error catcher: " + e);
+			e.printStackTrace();
 		} finally {
 			System.err.println("Shutting down"); 
 			if( actor!=null ){
@@ -32,8 +33,6 @@ public class TestActor extends DefyndianActor{
 				actor.close();
 			}
 		}
-		System.out.println(Thread.activeCount());
-		
 	}
 
 }
