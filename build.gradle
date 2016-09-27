@@ -2,7 +2,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'application'
-apply plugin: 'eclipse'
 ////////////
 
 sourceCompatibility = 1.8
@@ -12,8 +11,20 @@ repositories{
 	mavenLocal()	
 	mavenCentral()
 }
-dependencies{
-	compile('com.defyndian:defyndian-core:1.0.0');
+
+install {
+    repositories.mavenInstaller {
+        pom.version = '1.0.0'
+        pom.groupId = 'com.defyndian'
+        pom.artifactId = 'test-actor'
+    }
+}
+
+dependencies {
+	compile('com.defyndian:defyndian-core:1.2.0');
+    compile('org.slf4j:slf4j-simple:1.7.21');
+    testCompile('junit:junit:4.12');
+    testCompile('org.mockito:mockito-all:1.10.19');
 }
 
 //////////
