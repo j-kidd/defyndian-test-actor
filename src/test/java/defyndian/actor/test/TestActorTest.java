@@ -3,12 +3,10 @@ package defyndian.actor.test;
 import defyndian.config.DefyndianConfig;
 import defyndian.core.Consumer;
 import defyndian.core.Publisher;
-import defyndian.messaging.BasicDefyndianMessage;
+import defyndian.messaging.messages.BasicDefyndianMessage;
+import org.junit.Before;
 import org.junit.Test;
 
-import defyndian.core.DefyndianActor;
-import defyndian.exception.DefyndianDatabaseException;
-import defyndian.exception.DefyndianMQException;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -20,9 +18,14 @@ public class TestActorTest {
 	@Mock private Publisher publisher;
 	@Mock private Consumer consumer;
 	@Mock private DefyndianConfig config;
+	private String name = "TestActor";
 
 	@InjectMocks
 	private TestActor target;
+
+	@Before
+	public void setup(){
+	}
 
 	@Test
 	public void testActor() throws Exception{
