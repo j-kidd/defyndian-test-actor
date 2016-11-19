@@ -11,6 +11,10 @@
     <artifactId>test-actor</artifactId>
     <version>1.1.0</version>
 
+    <properties>
+        <node.mainClass>defyndian.actor.test.TestActor</node.mainClass>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.defyndian</groupId>
